@@ -4,13 +4,13 @@ CREATE TABLE registration (
     username VARCHAR(20) PRIMARY KEY,
     password varchar(20),
     email varchar(50),
-usertype varchar(20),
+usertype varchar(20)
 );
 CREATE TABLE login_details (
     username VARCHAR(20) PRIMARY KEY,
     password varchar(20),
     login_time datetime,
-usertype varchar(20)
+usertype varchar(20),
     FOREIGN KEY (username) REFERENCES registration(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
