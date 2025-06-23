@@ -1,4 +1,3 @@
-create database organ;
 
 CREATE TABLE registration (
     username VARCHAR(20) PRIMARY KEY,
