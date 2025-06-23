@@ -1,18 +1,12 @@
 <?php
 session_start();
+include 'connection.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['username'])) {
     echo "<script>alert('Please log in first to view patients.'); window.location.href = 'login.php';</script>";
     exit();
 }
-
-// Database connection
-$con = mysqli_connect("localhost", "root", "", "organ");
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
 $select_query = "SELECT * FROM patients";
 $result = mysqli_query($con, $select_query);
 
@@ -102,7 +96,7 @@ $result = mysqli_query($con, $select_query);
   </table>
   <br><br>
   <center>
-  <button onclick="window.location.href='logo.php';">Return Home</button>
+  <button onclick="window.location.href='index.html';">Return Home</button>
 </center>
 </body>
 </html>

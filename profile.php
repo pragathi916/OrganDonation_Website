@@ -1,18 +1,12 @@
 <?php
 session_start();
+include 'connection.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['username'])) {
     echo "<script>alert('Please log in first to view your profile.'); window.location.href = 'login.php';</script>";
     exit();
 }
-
-// Database connection
-$con = mysqli_connect("localhost", "root", "", "organ");
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
 // Get username from session
 $username = $_SESSION['username'];
 
@@ -157,7 +151,7 @@ mysqli_close($con);
 </style></head>
 <body>
 <center>
-<button onclick="window.location.href='logo.php';">Return Home</button>
+<button onclick="window.location.href='index.html';">Return Home</button>
 </center>
 </body>
 </html>

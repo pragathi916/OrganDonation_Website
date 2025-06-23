@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OrgPulse website</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div>
+      <img src="logo.jpg" alt="Logo" class="logo" />
+    </div>
+    <div class="text-container">
+      <h1 class="org-name">ORG PULSE</h1>
+      <p class="slogan"><b>Be a symbol of hope for those who are waiting</b></p>
+    </div>
+  </header>
+
+  <div class="search-container">
+    <a href="login.php" class="login-link">Login/Sign-up</a>
+
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <div class="profile-pic-container">
+        <img src="profile.webp" class="profile-pic" id="userImage" />
+        <span class="alt-message">Profile</span>
+      </div>
+
+      <input type="file" class="file-upload" id="profileUpload" accept="image/*" onchange="previewProfile()" />
+      <label for="profileUpload" class="upload-btn">Upload Picture</label><br /><br />
+      <button class="upload-btn" onclick="viewProfile()">View Profile</button><br /><br />
+      <button class="upload-btn" onclick="window.location.href='donor_details.php';">View Donors</button><br /><br />
+      <button class="upload-btn" onclick="window.location.href='patient_details.php';">View Patients</button><br /><br />
+      <button class="upload-btn" onclick="window.location.href='search.php';">Search Donors/Patients</button><br /><br />
+      <button class="upload-btn" id="deleteBtn">Delete Profile</button><br /><br />
+      <button class="upload-btn" id="logoutBtn">Logout</button>
+    </div>
+    <div id="main">
+      <button class="openbtn" onclick="openNav()">☰</button>
+    </div>
+
+  </div>
+
+  <br /><br />
+  <div style="display: flex; justify-content: space-between;">
+    <div class="count">
+      <h2 style="text-align: center"><b>Registered Donors</b></h2><br />
+      <h3 style="text-align: center" id="donorCount">Loading...</h3>
+    </div>
+
+    <div class="count">
+      <h2 style="text-align: center"><b>Registered Patients</b></h2><br />
+      <h3 style="text-align: center" id="patientCount">Loading...</h3>
+    </div>
+  </div>
+
+  <br /><br />
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div class="box1">
+      <h2 style="text-align: center"><b>Register as Donor</b></h2><br />
+      <p style="text-align: center"><b>Fill out your details below</b></p><br />
+      <a href="donor.php" class="button">Register</a>
+    </div>
+
+    <div class="box1">
+      <h2 style="text-align: center"><b>Register as Patient</b></h2><br />
+      <p style="text-align: center"><b>Fill out your details below</b></p><br />
+      <a href="patient.php" class="button">Register</a>
+    </div>
+  </div>
+
+  <div class="flex-container">
+    <div class="box">
+      <img src="org.jpg" alt="Organ Donation" />
+      <b>WHAT IS ORGAN AND TISSUE DONATION?</b><br />
+      Organ Donation is the gift of an organ...
+    </div>
+
+    <div class="box">
+      <img src="org1.jpg" alt="Transplantation" />
+      <b>WHAT IS TRANSPLANTATION?</b><br />
+      Surgical operation in which...
+    </div>
+
+    <div class="box">
+      <img src="org2.jpg" alt="Why Donate" />
+      <b>WHY SHOULD WE DONATE?</b><br />
+      Donating organs is a profoundly altruistic act...
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-content">
+      <b>Address </b><br />
+      NMAM Institute Of Technology, Nitte<br />
+      Karkala, Karnataka<br />
+      Toll-Free Number: 1800-11-4770
+    </div>
+    <div class="line"></div>
+    <div class="right-content">
+      <b>Policies</b><br />
+      <a href="terms.html" target="_blank">Terms and Conditions</a><br />
+      <a href="website.html" target="_blank">Website Policies</a><br />
+      <a href="privacy.html" target="_blank">Privacy Policies</a>
+    </div>
+  </div>
+
+  <script>
+    function searchWebsite() {
+      const searchQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+      const elements = document.querySelectorAll("body *");
+      let found = false;
+      elements.forEach((element) => {
+        const text = element.textContent.toLowerCase();
+        if (text.includes(searchQuery)) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          found = true;
+          return;
+        }
+      });
+      if (!found) {
+        alert("No match found!");
+      }
+    }
+
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginRight = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginRight = "0";
+    }
+
+    function previewProfile() {
+      const fileInput = document.getElementById("profileUpload");
+      const profilePic = document.getElementById("userImage");
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        profilePic.src = reader.result;
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        profilePic.src = "profile.png";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("logoutBtn").addEventListener("click", function () {
+        window.location.href = "logout.php";
+      });
+    });
+
+    document.getElementById("deleteBtn").addEventListener("click", function () {
+      if (confirm("Are you sure you want to delete your profile?")) {
+        window.location.href = "delete_profile.php";
+      } else {
+        alert("Profile deletion canceled.");
+      }
+    });
+
+    function viewProfile() {
+      window.location.href = "profile.php";
+    }
+
+  fetch('index.php')
+    .then(response => {
+    if (!response.ok) throw new Error('Fetch error');
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById('donorCount').textContent = data.donors ?? '0';
+    document.getElementById('patientCount').textContent = data.patients ?? '0';
+  })
+  .catch(error => {
+    document.getElementById('donorCount').textContent = 'Error';
+    document.getElementById('patientCount').textContent = 'Error';
+    console.error('Fetch error:', error);
+  });
+
+  </script>
+</body>
+</html>

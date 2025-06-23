@@ -1,15 +1,10 @@
 <?php
 // Start session
 session_start();
+include 'connection.php';
 
 // Check if user is logged in
 if(isset($_SESSION['username'])) {
-    // Database connection
-    $con = mysqli_connect("localhost", "root", "", "organ");
-    if (!$con) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
     // Get username of logged-in user
     $username = $_SESSION['username'];
 
@@ -41,7 +36,7 @@ if(isset($_SESSION['username'])) {
         session_unset();
         session_destroy();
         echo "<script>alert('Logged out.. Redirecting to homepage.');</script>";
-        echo '<meta http-equiv="refresh" content="2;url=logo.php">';
+        echo '<meta http-equiv="refresh" content="2;url=index.html">';
         exit();
     } else {
         echo "<script>alert('Session username exists, but no record found in database.');</script>";

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 echo '<script>alert("Login successful! Redirecting to homepage..");</script>';
                 // Redirect to another page after a delay
-                echo '<meta http-equiv="refresh" content="2;url=logo.php">';
+                echo '<meta http-equiv="refresh" content="2;url=index.html">';
                 exit; // Use exit instead of die
             } else {
                 // Display incorrect password message as an alert
@@ -64,64 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         align-items: center;
         display: flex;
         height: 100vh;
-
     }
-
-        .login-container {
-            width: 400px;
-            margin: 6px auto;
-            padding: 50px;
-            background-color: bisque;
-            border: 1px solid #ebebeb;
-            border-radius: 3px;
-            font-size: 22px;
-        }
-
-        table {
-            width: 100%;
-        }
-
-        td {
-            padding: 20px;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        input[type="submit"],
-        .return-home {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            background-color: #990011;
-            color: #FCF6F5;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover,
-        .return-home:hover {
-            background-color: #80080E;
-        }
-
-        h2 {
-            text-align: center;
-            color: #990011;
-        }
-
-        .return-home {
-            margin-top: 10px;
-        }
-
-        .signup-link {
-            font-size: 14px;
-        }
     </style>
+      <link rel="stylesheet" href="style.css"/>
+
 </head>
 
 <body>

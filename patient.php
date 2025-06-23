@@ -168,11 +168,8 @@
 
 
   <?php
-// Database connection
-$con = mysqli_connect("localhost", "root", "", "organ");
-if (!$con) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+  include 'connection.php';
+
 
 // Create patients table if it doesn't exist
 $create_table_query = "CREATE TABLE IF NOT EXISTS patients (

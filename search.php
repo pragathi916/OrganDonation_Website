@@ -1,10 +1,6 @@
 
 <?php
-// Database connection
-$con = mysqli_connect("localhost", "root", "", "organ");
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'connection.php';
 
 $searchResult = ""; 
 
@@ -194,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchType'])) {
     <br><br>
     <?php echo $searchResult; ?>
     <center>
-        <button onclick="window.location.href='logo.php';">Return Home</button>
+        <button onclick="window.location.href='index.html';">Return Home</button>
     </center>
 </body>
 

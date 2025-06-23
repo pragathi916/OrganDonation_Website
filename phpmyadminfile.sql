@@ -6,6 +6,7 @@ CREATE TABLE registration (
     email varchar(50),
 usertype varchar(20)
 );
+
 CREATE TABLE login_details (
     username VARCHAR(20) PRIMARY KEY,
     password varchar(20),
@@ -23,7 +24,6 @@ CREATE TABLE patients (
 	age	int(3),
 	usertype	varchar(20)	,
     FOREIGN KEY (username) REFERENCES registration(username) ON DELETE CASCADE ON UPDATE CASCADE
-
 );
 
 CREATE TABLE donor (
